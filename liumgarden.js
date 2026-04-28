@@ -9,6 +9,16 @@ $(document).ready(function(){
     $('#add_btn').click(function(){
         $('.popupView').hide();
     })
+
+    // myPlant 식물 등록하기 팝업
+    $('.popupView_close').click(function(){
+        $('.plus_input').hide();
+    })
+    $('.plus_plant').click(function(){
+        $('.plus_input').show();
+    });
+
+    
 });
 
 $(document).ready(function(){

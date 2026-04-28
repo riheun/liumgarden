@@ -8,7 +8,6 @@
     <script src="liumgarden.js"></script>
     <title>LiumGarden</title>
     <style>
-        
         .menu_list li:nth-child(3){
             color: #424d42;
         }
@@ -38,13 +37,21 @@
 
         .myPlant{
             margin-top: 150px;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .myPlant_info{
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            border-left: 1px solid #ececec;
+            width: 300px;
+            height: 320px;
+            cursor: pointer;
         }
 
         .plant_info{
-            width: 300px;
-            height: 320px;
             background-color: white;
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
@@ -54,6 +61,7 @@
             top: 0;
             left: 0;
             width: 300px;
+            height: 200px;
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
@@ -72,7 +80,8 @@
         }
 
         .popupView{
-            height: 470px;   
+            width: 850px;
+            height: 470px;
         }
 
         .photo img{
@@ -81,16 +90,19 @@
         }
         
         .popupView_content{
-            padding-top: 55px;
+            width: 300px;
+            padding-top: 45px;
             box-sizing: border-box;
         }
 
         .popupView_content span{
-            width: 27%;
+            width: 35%;
+            margin-bottom: 10px;
         }
 
         .popupView_content h4{
-            width: 73%;
+            width: 65%;
+            margin-bottom: 10px;
         }
 
         .sub_icon button{
@@ -151,12 +163,60 @@
         #there button:hover{
             background-color: #4c6753;
         }
+
+        .plus_input{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -25%);
+            background-color: beige;
+            width: 500px;
+            padding: 40px;
+            border-radius: 20px;
+            display: none;
+            z-index: 999;
+        }
+
+        .input_group{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .input_group input{
+            padding: 10px;
+            border-radius: 15px;
+            border: 1px solid #4a744b;
+            outline: none;
+        }
+
+        .register_btn{
+            margin-top: 40px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 15px;
+            border: none;
+            background-color: #4a744b;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .register_btn:hover{
+            background-color: #4c6753;
+        }
+
+        .plus_input>.popupView_close{
+            font-size: 14px;
+            padding: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header_logo">
-            <a href="liumgarden.html">
+            <a href="index.html">
                 <img src="images/logo.png" alt="">
             </a>
         </div>
@@ -190,16 +250,16 @@
 
             <button class="plus_plant">식물 추가하기</button>
 
-            <ul class="myPlant">
-                <li class="myPlant_info">
+            <ul class="myPlant" id="myPlantList">
+                <!-- <li class="myPlant_info">
                     <div class="plant_info">
-                        <img src="images/my1.png" alt="">
+                        <img src="images/my1.png" alt="" id="myPlant_img">
                         <div class="plant_info_text">
                             <p class="name">스칸답서스</p>
                             <p class="nickname"><b>애칭</b></p>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </div>
         </div>
     </div>
@@ -212,6 +272,43 @@
             <button onclick="logingo()">로그인 하러가기</button>
         </div>
     </div>
+    
+    <div class="plus_input">
+        <div class="input_group">
+            <label for="img">식물 이미지</label>
+            <input type="text" id="img" placeholder="이미지 링크" oninput="changeImg(this.value)">
+        </div>
+        <div class="input_group">
+            <label for="name">식물명</label>
+            <input type="text" id="name" placeholder="예: 스킨답서스">
+        </div>
+        <div class="input_group">
+            <label for="nickname">애칭</label>
+            <input type="text" id="nickname" placeholder="예: 귀요미">
+        </div>
+        <div class="input_group">
+            <label for="adoption">식물 입양 날</label>
+            <input type="text" id="adoption" placeholder="예: 20260423">
+        </div>
+        <!-- <div class="input_group">
+            <label for="">등록한 날짜</label>
+            <input type="text" id="" placeholder="예: ">
+        </div> -->
+        <div class="input_group">
+            <label for="size">크기</label>
+            <input type="text" id="size" placeholder="예: 10cm">
+        </div>
+        <div class="input_group">
+            <label for="watering">물주기 날</label>
+            <input type="text" id="watering" placeholder="예: 매주 월요일">
+        </div>
+
+        <button class="register_btn" onclick="register()">등록하기</button>
+
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
 
     <div class="popupView">
         <h2>내 식물</h2>
@@ -219,20 +316,25 @@
             <img src="images/my1.png" alt="">
         </div>
         <div class="popupView_content">
-            <span>식물명 :</span>
-            <h4>설명</h4>
+            <div>
+                <span>식물명 :</span>
+                <h4 id="info_name">설명</h4>
+            </div>
+
+            <span>애칭 :</span>
+            <h4 id="info_nickname">설명</h4>
 
             <span>식물 입양 날 :</span>
-            <h4>설명</h4>
+            <h4 id="info_adoption">설명</h4>
 
             <span>등록한 날짜 :</span>
-            <h4>설명</h4>
+            <h4 id="info_register">설명</h4>
 
             <span>크기 :</span>
-            <h4>설명</h4>
+            <h4 id="info_size">설명</h4>
 
             <span>물주기 날 :</span>
-            <h4>설명</h4>
+            <h4 id="info_watering">설명</h4>
         </div>
         <div class="popupView_close">
             X 닫기
@@ -282,8 +384,6 @@
             window.location.href = "user.html";
         }
 
-
-
         window.onload = function(){
             const user = sessionStorage.getItem('loggedInUser');
 
@@ -301,6 +401,121 @@
                 logoutBtn.style.display = 'none';
             }
         }
+
+        let myPlants=JSON.parse(localStorage.getItem('myPlant')) || [];
+
+        function changeImg(url) {
+            const imgElement = document.getElementById('img');
+            imgElement.src = url.trim() !== "" ? url : "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+        }
+
+        function render(){
+            const listElement=document.getElementById('myPlantList');
+
+            listElement.innerHTML = "";
+
+            myPlants.forEach(function(mP){
+                const li=document.createElement('li')
+                li.classList.add('myPlant_info')
+
+                li.onclick = function() {
+                    showPopup(mP);
+                };
+
+                const imgSrc = mP.img && mP.img !== "" ? mP.img : "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+
+                li.innerHTML=`
+                    <div class="plant_info">
+                        <img src="${imgSrc}" alt="키우고 있는 식물">
+                        <div class="plant_info_text">
+                            <p class="name">${mP.name}</p>
+                            <p class="nickname"><b>${mP.nickname}</b></p>
+                        </div>
+                    </div>
+                `;
+
+                listElement.appendChild(li);
+            });
+
+            localStorage.setItem('myPlant', JSON.stringify(myPlants));
+        }
+        
+        function register(){
+            const imgElement = document.getElementById('img');
+
+            const imgInput=imgElement.src;
+            const nameInput = document.getElementById("name").value.trim();
+            const nicknameInput = document.getElementById("nickname").value.trim();
+            const joinDateInput = document.getElementById("adoption").value.trim();
+
+            let adoptionDate = "";
+
+            // 💡 8자리 숫자가 정확히 입력되었는지 확인 후 변환
+            if (joinDateInput.length === 8 && !isNaN(joinDateInput)) {
+                const year = joinDateInput.substring(0, 4);  // 2026
+                const month = joinDateInput.substring(4, 6); // 04
+                const day = joinDateInput.substring(6, 8);   // 23
+                adoptionDate = `${year}.${month}.${day}`; // 2026.04.23
+            }
+            else{
+                // 8자리가 아니거나 비어있으면 입력한 그대로 저장 (혹은 "X" 처리)
+                adoptionDate = joinDateInput || "X";
+            }
+
+            const sizeInput = document.getElementById("size").value.trim();
+            const wateringInput = document.getElementById("watering").value.trim().trim();
+
+            if (!nameInput || !wateringInput) {
+                alert("식물명과 물주기 날을 입력해주세요");
+                return;
+            }
+
+            myPlants.push({
+                id: Date.now(),
+                img: imgInput,
+                name: nameInput,
+                nickname: nicknameInput,
+                adoption: adoptionDate,
+                size: sizeInput,
+                watering: wateringInput
+            });
+
+            document.getElementById("img").value = "";
+            imgElement.src = "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+            document.getElementById("name").value = "";
+            document.getElementById("nickname").value = "";
+            document.getElementById("adoption").value = "";
+            document.getElementById("size").value = "";
+            document.getElementById("watering").value = "";
+
+            render();
+        }
+
+        function showPopup(data) {
+            const popup = document.querySelector('.popupView');
+            
+            const defaultImg = "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+            popup.querySelector('.photo img').src = (data.img && data.img !== "") ? data.img : defaultImg;
+
+            document.getElementById('info_name').innerText = data.name;
+
+            document.getElementById('info_nickname').innerText = (data.nickname && data.nickname.trim()) ? data.nickname : "X";
+            
+            document.getElementById('info_adoption').innerText = data.adoption;
+            
+            const regDate = new Date(data.id);
+            const year = regDate.getFullYear();
+            const month = String(regDate.getMonth() + 1).padStart(2, '0');
+            const day = String(regDate.getDate()).padStart(2, '0');
+            document.getElementById('info_register').innerText = `${year}.${month}.${day}`;
+            
+            document.getElementById('info_size').innerText = (data.size && data.size.trim()) ? data.size : "X";
+            document.getElementById('info_watering').innerText = data.watering;
+
+            popup.style.display = 'block';
+        }
+
+        render();
     </script>
 </body>
 </html>

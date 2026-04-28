@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <script src="liumgarden.js"></script>
 
     <style>
-        .menu_list li:nth-child(3){
+        .menu_list li:nth-child(2){
             color: #424d42;
         }
 
@@ -223,56 +224,54 @@
             background-color: #4c6753;
         }
 
+        .popupView{
+            display: none;
+            height: fit-content;
+            width: 500px;
+            padding: 40px;
+        }
+
+        .popupView h2{
+            text-align: center;
+            margin-top: -3px;
+        }
+
         .write_content{
             width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .write_content label{
-            display: flex;
-            padding-left: 40px;
             padding-bottom: 10px;
-            justify-content: center;
-            align-items: center;
-            width: 95%;
             box-sizing: border-box;
-            font-size: 20px;
-        
         }
 
         .write_content input{
-            display: flex;
-            padding-left: 40px;
-            height: 50px;
-            margin-bottom: 10px;
-            width: 100%;
+            margin-bottom: 20px;
             box-sizing: border-box;
-            font-size: 20px;
             border: 1px solid #578864;
             border-radius: 15px;
+            padding: 10px;
+            outline: none;
         }
 
         .write_content button{
             background-color: #578864;
             color: white;
             margin-top: 20px;
-            height: 60px;
-            width: 100%;
             text-align: center;
-            font-size: 20px;
             cursor: pointer;
             border: none;
             text-align: center;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             border-radius: 15px;
-            line-height: 60px;
+            padding: 10px;
         }
 
         .write_content button:hover{
             background-color: #4c6753;
-        }
-
-        .popupView{
-            display: none;
         }
 
         #community_list{
@@ -525,14 +524,14 @@
 <body>
     <div class="header">
         <div class="header_logo">
-            <a href="liumgarden.html">
+            <a href="index.html">
                 <img src="images/logo.png" alt="">
             </a>
         </div>
 
         <ul class="sub_icon">
             <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
-            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
             <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
         </ul>
         <div class="menu_box">
@@ -812,15 +811,20 @@
         <h2>글쓰기</h2>
         <div class="write_content">
             <label for="profile">프로필 사진</label>
-            <input type="url" id="profile">
+            <input type="url" id="profile" placeholder="이미지 링크 (정사각형 이미지로 업로드 해주세요)">
+
             <label for="name">사용자 이름</label>
-            <input type="text" id="name">
+            <input type="text" id="name" placeholder="사용자 이름을 입력해주세요">
+
             <label for="title">제목</label>
-            <input type="text" id="title">
+            <input type="text" id="title" placeholder="게시글의 제목을 입력해주세요">
+
             <label for="photo">게시물 사진</label>
-            <input type="url" id="photo">
+            <input type="url" id="photo" placeholder="게시할 사진의 링크를 입력해주세요">
+
             <label for="tag">태그</label>
-            <input type="text" id="tag">
+            <input type="text" id="tag" placeholder="태그를 입력해주세요 (예: #방울토마토)">
+
             <button onclick="addButton()" id="add_btn">작성하기</button>
         </div>
         

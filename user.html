@@ -132,8 +132,8 @@
         }
 
         #signupView .auth_link{
-            right: 435px;
-            top: 230px;
+            right: 440px;
+            top: 223px;
             cursor: pointer;
         }
 
@@ -170,14 +170,14 @@
 <body>
     <div class="header">
         <div class="header_logo">
-            <a href="liumgarden.html">
+            <a href="index.html">
                 <img src="images/logo.png" alt="">
             </a>
         </div>
 
         <ul class="sub_icon">
             <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
-            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
             <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
         </ul>
         <div class="menu_box">
@@ -322,7 +322,7 @@
             const loggedInUser = sessionStorage.getItem('loggedInUser');
 
             if(loggedInUser){
-                window.location.href = "liumgarden.html";
+                window.location.href = "index.html";
             }
             else{
                 switchView('loginView')

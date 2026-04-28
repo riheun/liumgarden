@@ -16,7 +16,7 @@
            padding-top: 230px;
         }
         
-        .menu_list li:nth-child(6){
+        .menu_list li:nth-child(5){
             color: #424d42;
         }
 
@@ -171,6 +171,7 @@
             border-radius: 30px;
             border: none;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .request_btn:hover{
@@ -179,6 +180,7 @@
         }
 
         .popupView{
+            position: fixed;
             width: 500px;
             height: 270px;
             padding-top: 70px;
@@ -213,12 +215,14 @@
 <body>
     <div class="header">
         <div class="header_logo">
-            <img src="images/logo.png" alt="">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
         </div>
 
         <ul class="sub_icon">
             <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
-            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
             <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
         </ul>
         <div class="menu_box">
@@ -231,9 +235,6 @@
             </ul>
         </div>
     </div>
-    <!-- <div class="banner">
-        <img src="images/home_banner.PNG" alt="">
-    </div> -->
 
     <div class="container">
         <div class="title">
@@ -306,44 +307,44 @@
             <h4>서비스 신청하기</h4>
 
             <form action="">
-                <label for="">신청자</label>
-                <input type="text" placeholder="신청자 이름을 입력해주세요">
+                <label for="name">신청자</label>
+                <input type="text" id="name" placeholder="신청자 이름을 입력해주세요">
                 
-                <label for="">상담제목</label>
-                <input type="text" placeholder="상담제목을 입력해주세요">
+                <label for="title">상담제목</label>
+                <input type="text" id="title" placeholder="상담제목을 입력해주세요">
 
-                <label for="">주소</label>
-                <input type="text" placeholder="주소를 입력해주세요">
+                <label for="address">주소</label>
+                <input type="text" id="address" placeholder="주소를 입력해주세요">
 
-                <label for="">연락처</label>
-                <input type="text" placeholder="연락처를 입력해주세요">
+                <label for="phone">연락처</label>
+                <input type="text" id="phone" placeholder="연락처를 입력해주세요 (예: 010-1234-5678)">
 
-                <label for="">식물 종류</label>
-                <input type="text" placeholder="식물 종류를 입력해주세요">
+                <label for="plant">식물명</label>
+                <input type="text" id="plant" type placeholder="식물명을 입력해주세요">
 
-                <label for="">개인정보 수집 및 이용 동의</label>
+                <label for="agree">개인정보 수집 및 이용 동의</label>
                 <div class="agree">
-                    <input type="checkbox">동의합니다
+                    <input type="checkbox" id="agree">동의합니다
                 </div>
 
-                <label for="">문의 내용</label>
-                <textarea placeholder="문의하고 싶은 내용을 작성해주세요"></textarea>
+                <label for="req_content">문의 내용</label>
+                <textarea id="req_content" placeholder="문의하고 싶은 내용을 작성해주세요"></textarea>
 
                 <p>가정집 분갈이 및 화분관리 관련 서비스는 제공되지 않습니다</p>
 
 
-                <button class="request_btn">상담 신청하기</button>
+                <button type="button" class="request_btn" onclick="request()">상담 신청하기</button>
             </form>
         </div>
     </div>
 
-    <div class="popupView">
+    <div class="popupView" id="complete">
         <div class="popupView_content">
             <h4>신청자</h4>
-            <span>신청자 이름</span>
+            <span id="req_name">신청자 이름</span>
 
             <h4>작성일</h4>
-            <span>작성일</span>
+            <span id="req_date">작성일</span>
 
             <p>상담 신청이 완료되었습니다</p>
         </div>
@@ -382,5 +383,48 @@
         </div>
     </div>
     
+    <script>
+        function request() {
+            const name = document.getElementById('name').value.trim();
+            const title = document.getElementById('title').value.trim();
+            const addr = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const plant = document.getElementById('plant').value.trim();
+            const content = document.getElementById('req_content').value.trim();
+            const agree = document.getElementById('agree').checked;
+
+            // 2. 모든 필드가 채워졌는지 확인 (유효성 검사)
+            if (!name || !title || !addr || !phone || !plant || !content) {
+                alert("모든 빈칸을 채워주세요.");
+                return;
+            }
+
+            if (!agree) {
+                alert("개인정보 수집 및 이용에 동의해주세요.");
+                return;
+            }
+
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const formattedDate = `${year}.${month}.${day}`;
+
+            // 4. 팝업창에 데이터 꽂기
+            document.getElementById('req_name').innerText = name;
+            document.getElementById('req_date').innerText = formattedDate;
+
+            // 5. 팝업 열기
+            document.getElementById('complete').style.display = 'block';
+
+            document.getElementById("name").value = "";
+            document.getElementById("title").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("plant").value = "";
+            document.getElementById("req_content").value = "";
+            document.getElementById("agree").checked = false;
+        }
+    </script>
 </body>
 </html>
