@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <title>LiumGarden</title>
+    <style>
+        
+        .menu_list li:nth-child(3){
+            color: #424d42;
+        }
+
+        .title{
+            padding-top: 60px;
+        }
+
+        .plus_plant{
+            width: 180px;
+            padding: 15px;
+            background-color: #4a744b;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            float: right;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .plus_plant:hover{
+            background-color: #4c6753;
+        }
+
+        .myPlant{
+            margin-top: 150px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .plant_info{
+            width: 300px;
+            height: 320px;
+            background-color: white;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .plant_info img{
+            top: 0;
+            left: 0;
+            width: 300px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        
+        .plant_info_text{
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .name{
+            margin-bottom: 5px;
+        }
+
+        .nickname{
+            font-size: 18px;
+        }
+
+        .popupView{
+            height: 470px;   
+        }
+
+        .photo img{
+            width: 450px;
+            height: 300px;
+        }
+        
+        .popupView_content{
+            padding-top: 55px;
+            box-sizing: border-box;
+        }
+
+        .popupView_content span{
+            width: 27%;
+        }
+
+        .popupView_content h4{
+            width: 73%;
+        }
+
+        .sub_icon button{
+            width: 90px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-right: 15px;
+            background-color: #4a744b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .sub_icon button:hover{
+            background-color: #4c6753;
+        }
+
+        .here.active{
+            display: block;
+        }
+
+        #there.active{
+            display: none;
+        }
+
+        .here{
+            display: none;
+        }
+
+        #there{
+            padding-top: 230px;
+        }
+
+        #there h1{
+            margin-top: 120px;
+            margin-bottom: 80px;
+        }
+
+        #there button{
+            background-color: #4a744b;
+            color: white;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #there button:hover{
+            background-color: #4c6753;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="liumgarden.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <button onclick="myplantout()">로그아웃</button>
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="store.html"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="here">
+        <div class="banner">
+            <img src="images/myplant_banner.png" alt="">
+        </div>
+
+        <div class="container my_container">
+            <div class="title">
+                <h2>My Plant</h2>
+                <img src="images/line2.png" alt="">
+            </div>
+
+            <button class="plus_plant">식물 추가하기</button>
+
+            <ul class="myPlant">
+                <li class="myPlant_info">
+                    <div class="plant_info">
+                        <img src="images/my1.png" alt="">
+                        <div class="plant_info_text">
+                            <p class="name">스칸답서스</p>
+                            <p class="nickname"><b>애칭</b></p>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div id="there">
+        <div class="title">
+            <h2>My Plant</h2>
+            <img src="images/line2.png" alt="">
+            <h1>로그인 후 이용 가능한 서비스입니다.</h1>
+            <button onclick="logingo()">로그인 하러가기</button>
+        </div>
+    </div>
+
+    <div class="popupView">
+        <h2>내 식물</h2>
+        <div class="photo">
+            <img src="images/my1.png" alt="">
+        </div>
+        <div class="popupView_content">
+            <span>식물명 :</span>
+            <h4>설명</h4>
+
+            <span>식물 입양 날 :</span>
+            <h4>설명</h4>
+
+            <span>등록한 날짜 :</span>
+            <h4>설명</h4>
+
+            <span>크기 :</span>
+            <h4>설명</h4>
+
+            <span>물주기 날 :</span>
+            <h4>설명</h4>
+        </div>
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myplantout(){
+            sessionStorage.removeItem('loggedInUser');
+
+            window.location.href = "myplant.html#there";
+        }
+
+        function logingo(){
+            sessionStorage.removeItem('loggedInUser');
+
+            window.location.href = "user.html";
+        }
+
+
+
+        window.onload = function(){
+            const user = sessionStorage.getItem('loggedInUser');
+
+            const here = document.querySelector('.here');
+            const there = document.querySelector('#there');
+            const logoutBtn = document.querySelector('.sub_icon button');
+
+            if(user){
+                here.style.display = 'block';
+                there.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                here.style.display = 'none';
+                there.style.display = 'block';
+                logoutBtn.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

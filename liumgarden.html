@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <title>LiumGarden</title>
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+
+    <style>
+
+        .banner{
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+        
+        .banner img{
+            width: 100%;
+            height: 500px;
+        }
+
+        .banner h1{
+            position: absolute;
+            right: 3%;
+            top: 48%;
+            text-align: center;
+        }
+
+        .banner p{
+            position: absolute;
+            right: 5%;
+            top: 72%;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .home_one{
+            margin-top: 100px;
+            height: 500px;
+            margin-bottom: 100px;
+
+        }
+
+        .home_one_photo{
+            width: 50%;
+            float: left;
+            margin-bottom: 100px;
+        }
+
+        .home_one_photo img{
+            width: 500px;
+            border-radius: 15px;
+        }
+
+        .home_one_content{
+            width: 50%;
+            float: left;
+            height: 500px;
+            position: relative;
+            margin-bottom: 100px;
+            margin-top: 50px;
+        }
+
+        .home_one_content h3{
+            font-size: 26px;
+            position: absolute;
+            top: 70px;
+        }
+
+        .home_one_content span{
+            position: absolute;
+            top: 150px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .home_two{
+            width: 100%;
+            position: relative;
+            height: 500px;
+            margin-bottom: 100px;
+        }
+
+        .home_two_content{
+            width: 50%;
+            position: absolute;
+            height: 500px;
+            left: 0;
+        }
+
+        .home_two_content h3{
+            font-size: 26px;
+            margin-left: 70px;
+            margin-top: 60px;
+        }
+
+        .home_two_content p{
+            font-size: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 40px;
+            margin-left: 70px;
+            margin-top: 50px;
+        }
+
+        .home_two_photo{
+            width: 50%;
+            height: 500px;
+            right: 0;
+            position: absolute;
+        }
+
+        .home_two_photo img{
+            width: 500px;
+            border-radius: 15px;
+            margin-left: 150px;
+        }
+
+        .home_three{
+            width: 100%;
+            position: relative;
+            height: 500px;
+        }
+
+        .home_three_content{
+            width: 50%;
+            position: absolute;
+            height: 500px;
+            right: 0;
+        }
+
+        .home_three_content h3{
+            font-size: 26px;
+            margin-top: 70px;
+            margin-bottom: 50px;
+        }
+
+        .home_three_content span{
+            font-size: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 40px;
+            margin-top: 50px;
+        }
+
+        .home_three_photo{
+            width: 50%;
+            height: 500px;
+            left: 0;
+            position: absolute;
+        }
+
+        .home_three_photo img{
+            width: 500px;
+            border-radius: 15px;
+        }
+
+        .title{
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 30px;
+            font-size: 22px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .sub2 img{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 53.5%;
+        }
+
+        .intro{
+            width: 100%;
+        }
+
+        .intro_list{
+            width: 100%;
+            height: 250px;
+        }
+
+        .intro_list li{
+            float: left;
+            width: 18%;
+            background-color: black;
+        }
+
+        .intro_list li:first-child{
+            margin-right: 32px;
+        }
+
+        .intro_list li:nth-child(2), .intro_list li:nth-child(3), .intro_list li:nth-child(4){
+            margin-right: 32px;
+        }
+
+        .intro_box{
+            background-color: black;
+            width: 100%;
+            height: 250px;
+            position: relative;
+        }
+
+
+        .intro_box img{
+            width: 100%;
+            height: 250px;
+            position: absolute;
+        }
+
+        .intro_box img:hover{
+            opacity: 0.7;
+            transition: all 0.4s;
+        }
+
+        .intro_box h3{
+            position: absolute;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 30%;
+        }
+        
+
+
+        .intro_box span{
+            position: absolute;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 45%;
+        }
+
+        .intro_box .read{
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            background-color: #4a744b;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 62%;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 7px;
+        }
+
+        .intro_box .read:hover{
+            top: 64%;
+            transition: all 0.4s;
+        }
+
+        .post{
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .post_list{
+            width: 100%;
+            height: 300px;
+            border-top: 1px solid #000000;
+        }
+
+        .post_list li{
+            height: 50px;
+            padding: 10px;
+            border-bottom: 1px solid #000000;
+            line-height: 50px;
+            color: black;
+        }
+
+        .post_list li:hover{
+            background-color: #dbdbdb;
+        }
+
+        .post_list strong{
+            width: 85%;
+            float: left;
+            font-weight: normal;
+        }
+
+        .post_list span{
+            float: left;
+            width: 15%;
+        }
+
+        
+
+
+        
+
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="liumgarden.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="images/home__banner.png" alt="">
+        <h1>식물을 키워보고 싶지만,<br> 어떻게 시작해야할지 모르시겠죠?</h1>
+        <p>나는 식물을 죽이기만 해서, 나는 식물을 잘 못키워서 <br>걱정이시라면 리움가든이 알려드려요.</p>
+    </div>
+    <div class="container">
+        <div class="home_one">
+            <div class="home_one_photo">
+                <img src="images/home1.png" alt="">
+            </div>
+            <div class="home_one_content">
+                <h3>씨앗, 한번 키워보실래요?</h3>
+                <span>리움가든은 식물을 한번도 키워보지 않은 사람들과 <br>식물을 이제 막 키우는 초보자들을 위한 사이트입니다. <br>식물을 키워보고 싶지만 어디서부터 어떻게 시작해야할지<br>모르겠다면 씨앗을 심어보는 일부터 시작해보세요.</span>
+            </div>
+        </div>
+        <div class="home_two">
+            <div class="home_two_content">
+                <h3>한 알의 씨앗이 주는 힘</h3>
+                <p>한 알의 씨앗을 심고, 가꾸고, 키우다보면 <br>어느새 식물을 재배하고, 수확하는 기쁨을 알게 될거예요. <br><br>물론, 처음에는 실패할 수도 있고<br>생각하지도 못한 어려움이 생길지도 모르지만 <br>"그것만으로도 충분해요!"
+                </p>
+            </div>
+            <div class="home_two_photo">
+                <img src="images/home2.png" alt="">
+            </div>
+        </div>
+        <div class="home_three">
+            <div class="home_three_photo">
+                <img src="images/home3.png" alt="">
+            </div>
+            <div class="home_three_content">
+                <h3>내 마음 건강을 위한 첫걸음</h3>
+                <span>나만의 반려식물과 함께<br>작은 즐거움과, 생명력의 기쁨을 알아가며<br>바쁜 삶 속에서 힐링시간을 가져보세요.<br><br>여러분의 도전을 언제나 옆에서 응원합니다.</span>
+            </div>
+        </div>
+
+        <div class="sub2 title" style="margin-top: 150px;">
+            <p>바로가기 <img src="images/link.png" alt=""></p>
+        </div>
+        <div class="intro">
+            <ul class="intro_list">
+                <li>
+                    <div class="intro_box">
+                        <img src="images/homin1.jpg" alt="">
+                        <h3>식물사전</h3>
+                        <span>식물 지식/특징</span>
+                        <div class="read"><a href="dic.html">Read More</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="intro_box">
+                        <img src="images/homein2.jpg" alt="">
+                        <h3>커뮤니티</h3>
+                        <span>식물 SNS</span>
+                        <div class="read"><a href="community.html">Read More</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="intro_box">
+                        <img src="images/homin3.jpg" alt="">
+                        <h3>My Plant</h3>
+                        <span>내 식물 관리</span>
+                        <div class="read"><a href="myPlant.html">Read More</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="intro_box">
+                        <img src="images/homin4.jpg" alt="">
+                        <h3>스토어</h3>
+                        <span>식물 상점</span>
+                        <div class="read"><a href="store.html">Read More</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="intro_box">
+                        <img src="images/homein5.jpg" alt="">
+                        <h3>식물병원</h3>
+                        <span>식물 치료</span>
+                        <div class="read"><a href="plantHostial.html">Read More</a></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sub2 title" style="margin-top: 150px;">
+            <p>공지사항 <img src="images/notice.png" alt=""></p>
+        </div>
+
+        <div class="post">
+            <ul class="post_list">
+                <li>
+                    <strong>🌿 처음 오신 분들을 위한 이용 가이드</strong>
+                    <span>2026-04-20</span>
+                </li>
+                <li>
+                    <strong>🚀 회원가입부터 식물 등록까지 한 번에!</strong>
+                    <span>2026-04-21</span>
+                </li>
+                <li>
+                    <strong>💧 물 주기 헷갈린다면? 관리 꿀팁 모음</strong>
+                    <span>2026-04-22</span>
+                </li>
+                <li>
+                    <strong>🔥 이번 주 인기 식물 TOP 7 공개</strong>
+                    <span>2026-04-23</span>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
